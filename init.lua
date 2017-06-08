@@ -30,7 +30,7 @@ for i in ipairs(spawneggs_list) do
 		inventory_image = "spawneggs_"..eggtype..".png",
 		on_place = function(itemstack, placer, pointed_thing)
 			if pointed_thing.above then
-				minetest.env:add_entity(pointed_thing.above, "mobs:"..eggtype)
+				minetest.add_entity(pointed_thing.above, "mobs:"..eggtype)
 				itemstack:take_item()
 			end
 			return itemstack
@@ -86,7 +86,7 @@ if enable_node_spawn then
 		interval = grass_interval,
 		chance = grass_chance,
 		action = function(pos)
-		minetest.env:add_node(pos, {name="spawneggs:egg"})
+		minetest.add_node(pos, {name="spawneggs:egg"})
 		end,
 	})
 end
@@ -96,6 +96,6 @@ minetest.register_abm(
 	interval = egg_interval,
 	chance = egg_chance,
 	action = function(pos)
-	minetest.env:add_node(pos, {name="air"})
+	minetest.add_node(pos, {name="air"})
 	end,
 })
